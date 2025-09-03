@@ -9,17 +9,17 @@ import { getResponse } from './actions';
 
 const initialMessages: { [key: string]: string } = {
   'en-US':
-    'AI: Hello, I’m Luma ✨ your calm and sweet astrologer. I’m here to gently guide you through love, career, and your future. May I know your birth date, time, and place so I can look into the stars for you?',
+    'Luma: Hello, I’m Luma ✨ your calm and sweet astrologer. I’m here to gently guide you through love, career, and your future. May I know your birth date, time, and place so I can look into the stars for you?',
   'es-ES':
-    'AI: Hola, soy Luma ✨ tu astróloga tranquila y dulce. Estoy aquí para guiarte suavemente a través del amor, la carrera y tu futuro. ¿Puedo saber tu fecha, hora y lugar de nacimiento para poder mirar las estrellas por ti?',
+    'Luma: Hola, soy Luma ✨ tu astróloga tranquila y dulce. Estoy aquí para guiarte suavemente a través del amor, la carrera y tu futuro. ¿Puedo saber tu fecha, hora y lugar de nacimiento para poder mirar las estrellas por ti?',
   'fr-FR':
-    'AI: Bonjour, je suis Luma ✨ votre astrologue calme et douce. Je suis ici pour vous guider doucement à travers l’amour, la carrière et votre avenir. Puis-je connaître votre date, heure et lieu de naissance pour que je puisse regarder les étoiles pour vous?',
+    'Luma: Bonjour, je suis Luma ✨ votre astrologue calme et douce. Je suis ici pour vous guider doucement à travers l’amour, la carrière et votre avenir. Puis-je connaître votre date, heure et lieu de naissance pour que je puisse regarder les étoiles pour vous?',
   'de-DE':
-    'AI: Hallo, ich bin Luma ✨ deine ruhige und süße Astrologin. Ich bin hier, um dich sanft durch Liebe, Karriere und deine Zukunft zu führen. Darf ich dein Geburtsdatum, deine Geburtszeit und deinen Geburtsort erfahren, damit ich für dich in die Sterne schauen kann?',
+    'Luma: Hallo, ich bin Luma ✨ deine ruhige und süße Astrologin. Ich bin hier, um dich sanft durch Liebe, Karriere und deine Zukunft zu führen. Darf ich dein Geburtsdatum, deine Geburtszeit und deinen Geburtsort erfahren, damit ich für dich in die Sterne schauen kann?',
   'hi-IN':
-    'AI: नमस्ते, मैं लूमा ✨ आपकी शांत और प्यारी ज्योतिषी हूँ। मैं यहाँ प्यार, करियर और आपके भविष्य में आपका मार्गदर्शन करने के लिए हूँ। क्या मैं आपकी जन्म तिथि, समय और स्थान जान सकती हूँ ताकि मैं आपके लिए सितारों को देख सकूं?',
+    'Luma: नमस्ते, मैं लूमा ✨ आपकी शांत और प्यारी ज्योतिषी हूँ। मैं यहाँ प्यार, करियर और आपके भविष्य में आपका मार्गदर्शन करने के लिए हूँ। क्या मैं आपकी जन्म तिथि, समय और स्थान जान सकती हूँ ताकि मैं आपके लिए सितारों को देख सकूं?',
   'gu-IN':
-    'AI: નમસ્તે, હું લુમા છું ✨ તમારી શાંત અને મીઠી જ્યોતિષી. હું અહીં તમને પ્રેમ, કારકિર્દી અને તમારા ભવિષ્ય માટે હળવાશથી માર્ગદર્શન આપવા માટે છું. શું હું તમારી જન્મ તારીખ, સમય અને સ્થળ જાણી શકું જેથી હું તમારા માટે તારાઓમાં જોઈ શકું?',
+    'Luma: નમસ્તે, હું લુમા છું ✨ તમારી શાંત અને મીઠી જ્યોતિષી. હું અહીં તમને પ્રેમ, કારકિર્દી અને તમારા ભવિષ્ય માટે હળવાશથી માર્ગદર્શન આપવા માટે છું. શું હું તમારી જન્મ તારીખ, સમય અને સ્થળ જાણી શકું જેથી હું તમારા માટે તારાઓમાં જોઈ શકું?',
 };
 
 export default function ConversationPage() {
@@ -53,7 +53,7 @@ export default function ConversationPage() {
           const text = event.results[last][0].transcript;
           setTranscript(prev => [...prev, 'User: ' + text]);
           getResponse(text).then(response => {
-            setTranscript(prev => [...prev, 'AI: ' + response]);
+            setTranscript(prev => [...prev, 'Luma: ' + response]);
             const utterance = new SpeechSynthesisUtterance(response);
             utterance.lang = language;
             speechSynthesis.speak(utterance);
@@ -79,7 +79,7 @@ export default function ConversationPage() {
         const text = event.results[last][0].transcript;
         setTranscript(prev => [...prev, 'User: ' + text]);
         getResponse(text).then(response => {
-          setTranscript(prev => [...prev, 'AI: ' + response]);
+          setTranscript(prev => [...prev, 'Luma: ' + response]);
           const utterance = new SpeechSynthesisUtterance(response);
           utterance.lang = language;
           speechSynthesis.speak(utterance);
@@ -91,7 +91,7 @@ export default function ConversationPage() {
     toggleRecording();
 
     // Speak the first message
-    const firstMessage = initialMessages[language].substring(4);
+    const firstMessage = initialMessages[language].substring(5);
     const utterance = new SpeechSynthesisUtterance(firstMessage);
     utterance.lang = language;
     speechSynthesis.speak(utterance);
